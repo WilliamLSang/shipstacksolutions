@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShipStack Solutions — Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img class="logo-img" src="template/shipstack_solutions.png" alt="ShipStack Solutions logo" />
+        <span>ShipStack<span class="accent-orange"> Solutions</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="pricing.html" class="active">Pricing</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a class="btn" href="contact.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container pad-y">
+    <h1>Pricing</h1>
+    <p class="lead">Straightforward rates with volume discounts for growing brands.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <p class="price">$2.00 <span>/ unit</span></p>
+        <ul>
+          <li>Pick & pack</li>
+          <li>Basic packaging</li>
+          <li>3–5 day turnaround</li>
+        </ul>
+        <a class="btn btn-primary" href="contact.html">Choose Starter</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Growth</h3>
+        <p class="price">$1.50 <span>/ unit</span></p>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Branded inserts</li>
+          <li>2–3 day turnaround</li>
+        </ul>
+        <a class="btn btn-primary" href="contact.html">Choose Growth</a>
+      </div>
+      <div class="price-card">
+        <h3>Scale</h3>
+        <p class="price">Custom</p>
+        <ul>
+          <li>High volume</li>
+          <li>Dedicated support</li>
+          <li>SLA commitments</li>
+        </ul>
+        <a class="btn" href="contact.html">Talk to Sales</a>
+      </div>
+    </div>
+
+    <div class="muted small pad-y">
+      Final shipping label costs billed at carrier rates; storage and special projects quoted separately.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>ShipStack Solutions</strong>
+        <p class="muted">Reliable 3PL prep and fulfillment.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="pricing.html" class="active">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="muted small">© <span id="year"></span> ShipStack Solutions</div>
+    </div>
+  </footer>
+
+  <script src="scripts/index.js"></script>
+</body>
+</html>

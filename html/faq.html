@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShipStack Solutions — FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img class="logo-img" src="template/shipstack_solutions.png" alt="ShipStack Solutions logo" />
+        <span>ShipStack<span class="accent-orange"> Solutions</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a class="btn" href="contact.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container pad-y">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="accordion" id="faq-accordion">
+      <details open>
+        <summary>What turnaround times can we expect?</summary>
+        <p>Most orders ship within 2–3 business days. Expedited options are available on request.</p>
+      </details>
+      <details>
+        <summary>Do you support FBA/FBM and multi‑channel?</summary>
+        <p>Yes, we handle FBA prep, FBM fulfillment, and DTC across multiple marketplaces.</p>
+      </details>
+      <details>
+        <summary>How does pricing work?</summary>
+        <p>Per‑unit handling with add‑ons for special projects; storage and shipping are billed separately.</p>
+      </details>
+      <details>
+        <summary>Where are you located?</summary>
+        <p>We operate from centrally located facilities with fast ground coverage nationwide.</p>
+      </details>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>ShipStack Solutions</strong>
+        <p class="muted">Reliable 3PL prep and fulfillment.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="muted small">© <span id="year"></span> ShipStack Solutions</div>
+    </div>
+  </footer>
+
+  <script src="scripts/index.js"></script>
+</body>
+</html>

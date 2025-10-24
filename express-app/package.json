@@ -1,0 +1,17 @@
+{
+  "name": "shipstack-express",
+  "version": "1.0.0",
+  "description": "Basic Express server for ShipStack Solutions serving static site and a few API routes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["express","3pl","shipstack"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}

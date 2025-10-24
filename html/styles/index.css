@@ -1,0 +1,106 @@
+:root{
+	--bg:#ffffff;
+	--text:#111827; /* gray-900 */
+	--muted:#6b7280; /* gray-500 */
+	--card:#ffffff;
+	--border:#e5e7eb; /* gray-200 */
+	--accent:#0EA5A8; /* teal-500 */
+	--accent-dark:#0B8386;
+	--primary:#2563EB; /* blue-600 */
+	--orange:#F59E0B; /* amber-500 */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+	color:var(--text);
+	background:var(--bg);
+	line-height:1.6;
+}
+
+.container{width:min(1100px,92%);margin-inline:auto}
+.pad-y{padding:2rem 0}
+.small{font-size:.875rem}
+.muted{color:var(--muted)}
+
+/* Header / Nav */
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;color:inherit;text-decoration:none;font-weight:700}
+.brand .accent{color:var(--accent)}
+.brand .accent-orange{color:var(--orange)}
+.brand img.logo-img{height:28px;width:auto;display:block}
+.logo{display:inline-block}
+.primary-nav{display:flex;align-items:center;gap:1rem}
+.primary-nav a{color:#334155;text-decoration:none;padding:.5rem .6rem;border-radius:.5rem}
+.primary-nav a:hover{background:#f8fafc}
+.primary-nav .btn{margin-left:.5rem}
+.nav-toggle{display:none}
+
+/* Buttons */
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:.7rem 1rem;border-radius:.6rem;text-decoration:none;font-weight:600;box-shadow:0 2px 0 rgba(0,0,0,.05)}
+.btn:hover{background:var(--accent-dark)}
+.btn-primary{background:var(--primary)}
+.btn-primary:hover{background:#1d4ed8}
+.btn-ghost{background:transparent;color:var(--primary);border:1px solid var(--border)}
+.btn-ghost:hover{background:#f8fafc}
+
+/* Hero */
+.hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,#f0fdfd, #fff)}
+.hero h1{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:0 0 .8rem}
+.lead{color:#475569;max-width:65ch}
+.actions{margin-top:1.25rem;display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* Features */
+.features{padding:3rem 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:.8rem;padding:1.25rem}
+.card .icon{font-size:1.75rem}
+
+/* Highlight */
+.highlight{padding:3rem 0;background:linear-gradient(180deg,#fff,#f1f5f9)}
+.highlight h2{margin:0 0 .4rem}
+
+/* CTA */
+.cta{padding:2.5rem 0;background:#fff}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--border);background:#fff}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;padding:1.5rem 0}
+.site-footer nav{display:flex;flex-direction:column;gap:.25rem}
+.site-footer a{color:#334155;text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.25rem}
+.price-card{border:1px solid var(--border);border-radius:.8rem;padding:1.25rem;background:#fff}
+.price-card.featured{border-color:var(--primary);box-shadow:0 6px 24px rgba(37,99,235,.08)}
+.price{font-size:1.5rem;font-weight:700}
+.price span{font-size:.9rem;color:var(--muted)}
+
+/* Contact */
+form.contact-form{margin-top:1rem}
+.contact-form label{display:flex;flex-direction:column;gap:.35rem}
+.contact-form input,.contact-form textarea{padding:.7rem .8rem;border:1px solid var(--border);border-radius:.6rem;font:inherit}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+
+/* FAQ */
+.accordion details{border:1px solid var(--border);border-radius:.6rem;padding:.75rem 1rem;background:#fff}
+.accordion details+details{margin-top:.6rem}
+.accordion summary{cursor:pointer;font-weight:600}
+
+/* Utilities */
+.grid-2 ul{margin:.25rem 0 0 1rem}
+
+/* Responsive */
+@media (max-width: 800px){
+	.grid-3{grid-template-columns:1fr}
+	.pricing-grid{grid-template-columns:1fr}
+	.grid-2{grid-template-columns:1fr}
+	.footer-grid{grid-template-columns:1fr}
+	.primary-nav{position:fixed;inset:56px 0 auto 0;background:#fff;border-bottom:1px solid var(--border);padding:.6rem 4%;display:none;flex-wrap:wrap}
+	.primary-nav.show{display:flex}
+	.nav-toggle{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);background:#fff;border-radius:.5rem;padding:.45rem .7rem}
+}
