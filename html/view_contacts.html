@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ShipStack Solutions — Admin Contact Viewer" />
+    <title>ShipStack Solutions — View Contacts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/template/shipstack_solutions.png" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <style>
+        .auth-section {
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .contacts-section {
+            display: none;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .contacts-section.visible {
+            display: block;
+        }
+        .contact-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .contact-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0EA5A8;
+            margin: 0;
+        }
+        .contact-timestamp {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        .contact-field {
+            margin-bottom: 0.75rem;
+        }
+        .contact-field strong {
+            display: inline-block;
+            min-width: 120px;
+            color: #374151;
+        }
+        .contact-field span {
+            color: #6b7280;
+        }
+        .contact-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 4px;
+            border-left: 3px solid #0EA5A8;
+        }
+        .contact-message strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        .contact-message p {
+            margin: 0;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        .logout-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+        .stats-bar {
+            background: #0EA5A8;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .stats-bar h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .error-message {
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .success-message {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="ShipStack Solutions home">
+                <img class="logo-img" src="template/shipstack_solutions.png" alt="ShipStack Solutions logo" />
+                <span>ShipStack<span class="accent-orange"> Solutions</span></span>
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+            <nav id="primary-nav" class="primary-nav" aria-label="Main">
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About Us</a>
+                <a href="faq.html">FAQ</a>
+                <a class="btn" href="contact.html">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Authentication Section -->
+        <section id="authSection" class="auth-section">
+            <div class="card">
+                <h1>Admin Login</h1>
+                <p class="muted">Enter your credentials to view contact submissions.</p>
+                
+                <div id="authMessage"></div>
+                
+                <form id="authForm" class="form">
+                    <div class="form-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contacts Display Section -->
+        <section id="contactsSection" class="contacts-section">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            
+            <div class="stats-bar">
+                <h2 id="contactCount">Loading contacts...</h2>
+            </div>
+            
+            <div id="contactsList"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <strong>ShipStack Solutions</strong>
+                <p class="muted">Reliable 3PL prep and fulfillment.</p>
+            </div>
+            <nav aria-label="Footer">
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="muted small">© <span id="year"></span> ShipStack Solutions</div>
+        </div>
+    </footer>
+
+    <script src="template/config.js"></script>
+    <script src="scripts/index.js"></script>
+    <script>
+        // Authentication handler
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('authMessage');
+            
+            try {
+                const response = await fetch(apiUrl + (`:3000/api/contacts?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`));
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Hide auth section, show contacts section
+                    document.getElementById('authSection').style.display = 'none';
+                    document.getElementById('contactsSection').classList.add('visible');
+                    
+                    // Display contacts
+                    displayContacts(data.contacts, data.count);
+                } else if (response.status === 401) {
+                    messageDiv.innerHTML = '<div class="error-message">Please provide both username and password.</div>';
+                } else if (response.status === 403) {
+                    messageDiv.innerHTML = '<div class="error-message">Invalid credentials. Access denied.</div>';
+                } else {
+                    messageDiv.innerHTML = '<div class="error-message">An error occurred. Please try again.</div>';
+                }
+            } catch (error) {
+                console.error('Auth error:', error);
+                messageDiv.innerHTML = '<div class="error-message">Connection error. Please check if the server is running.</div>';
+            }
+        });
+        
+        // Display contacts sorted by timestamp (newest first)
+        function displayContacts(contacts, count) {
+            const contactCountEl = document.getElementById('contactCount');
+            const contactsListEl = document.getElementById('contactsList');
+            
+            contactCountEl.textContent = `Total Contacts: ${count}`;
+            
+            if (contacts.length === 0) {
+                contactsListEl.innerHTML = '<div class="card"><p class="muted">No contacts found.</p></div>';
+                return;
+            }
+            
+            // Sort by timestamp (newest first)
+            const sortedContacts = [...contacts].sort((a, b) => {
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+            
+            // Generate HTML for each contact
+            contactsListEl.innerHTML = sortedContacts.map(contact => {
+                const date = new Date(contact.timestamp);
+                const formattedDate = date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                return `
+                    <div class="contact-item">
+                        <div class="contact-header">
+                            <h3 class="contact-name">${escapeHtml(contact.name)}</h3>
+                            <span class="contact-timestamp">${formattedDate}</span>
+                        </div>
+                        <div class="contact-field">
+                            <strong>Email:</strong>
+                            <span><a href="mailto:${escapeHtml(contact.email)}">${escapeHtml(contact.email)}</a></span>
+                        </div>
+                        <div class="contact-field">
+                            <strong>Monthly Volume:</strong>
+                            <span>${escapeHtml(contact.volume || 'Not specified')}</span>
+                        </div>
+                        <div class="contact-field">
+                            <strong>Sales Channels:</strong>
+                            <span>${escapeHtml(contact.channels || 'Not specified')}</span>
+                        </div>
+                        ${contact.message ? `
+                            <div class="contact-message">
+                                <strong>Message:</strong>
+                                <p>${escapeHtml(contact.message)}</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Logout function
+        function logout() {
+            document.getElementById('authSection').style.display = 'block';
+            document.getElementById('contactsSection').classList.remove('visible');
+            document.getElementById('authForm').reset();
+            document.getElementById('authMessage').innerHTML = '';
+            document.getElementById('contactsList').innerHTML = '';
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

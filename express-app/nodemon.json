@@ -1,0 +1,12 @@
+﻿{
+    "ignore":  [
+                   "node_modules",
+                   "dist",
+                   "data"
+               ],
+    "exec":  "ts-node src/index.ts",
+    "ext":  "ts",
+    "watch":  [
+                  "src"
+              ]
+}

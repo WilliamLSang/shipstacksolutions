@@ -28,3 +28,47 @@
 		});
 	});
 })();
+
+// Contact form handler
+(function(){
+	const form = document.getElementById('contactForm');
+	const messageDiv = document.getElementById('formMessage');
+	if(form){
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+			const formData = new FormData(form);
+			const data = {
+				name: formData.get('name'),
+				email: formData.get('email'),
+				volume: formData.get('volume'),
+				channels: formData.get('channels'),
+				message: formData.get('message')
+			};
+			
+			try {
+				const response = await fetch(apiUrl + ':3000/api/contact', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data)
+				});
+				
+				const result = await response.json();
+				
+				if(response.ok){
+					messageDiv.style.color = '#10b981';
+					messageDiv.textContent = result.message || 'Thank you! Your message was sent.';
+					form.reset();
+				} else {
+					messageDiv.style.color = '#ef4444';
+					messageDiv.textContent = result.error || 'Error sending message. Please try again.';
+				}
+			} catch(err){
+				messageDiv.style.color = '#ef4444';
+				messageDiv.textContent = 'Network error. Please try again later.';
+				console.error('Contact form error:', err);
+			}
+		});
+	}
+})();
+
