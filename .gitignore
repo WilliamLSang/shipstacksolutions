@@ -8,6 +8,7 @@ pnpm-lock.yaml
 # Environment
 .env
 .env.*
+config.php
 
 # Logs
 logs/

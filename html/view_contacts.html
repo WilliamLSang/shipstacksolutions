@@ -207,7 +207,7 @@
             const messageDiv = document.getElementById('authMessage');
             
             try {
-                const response = await fetch(apiUrl + (`:3000/api/contacts?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`));
+                const response = await fetch(`/php_scripts/contacts.php?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
                 
                 if (response.ok) {
                     const data = await response.json();

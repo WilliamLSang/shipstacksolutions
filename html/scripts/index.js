@@ -47,7 +47,7 @@
 			};
 			
 			try {
-				const response = await fetch(apiUrl + ':3000/api/contact', {
+				const response = await fetch('/php_scripts/contacts.php', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(data)

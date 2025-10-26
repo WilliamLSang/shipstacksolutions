@@ -1,0 +1,40 @@
+# ShipStack Solutions - PHP Scripts Configuration
+
+# Deny direct access to config.php for security
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Enable CORS for API endpoints
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Handle OPTIONS requests for CORS preflight
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+    
+    # Remove .html extension from URLs
+    # If a file is requested with .html, redirect to the version without it
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+    RewriteRule ^ %1 [R=301,L]
+    
+    # Serve .html files when extension is omitted
+    # Skip if it's a directory or file that exists
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+# PHP settings
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value error_log ../data/php_errors.log
+</IfModule>
